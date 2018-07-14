@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
     ]
   });
 });
+// dette er en test;
 
 app.get('/yr/idag', (req, res) => {
   yr(res);
