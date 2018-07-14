@@ -24,6 +24,10 @@ app.get('/yr/imorgen', (req, res) => {
   yr(res, true);
 });
 
+app.get('/yr/:land/:fylke/:kommune/:by', (req, res) => {
+  yr2(res, false, req.params.land, req.params.fylke, req.params.kommune, req.params.by);
+});
+
 app.get('/yr/:land/:fylke/:kommune/:by/imorgen', (req, res) => {
   yr2(res, true, req.params.land, req.params.fylke, req.params.kommune, req.params.by);
 });
