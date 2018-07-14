@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
     ]
   });
 });
-// dette er en test;
 
 app.get('/yr/idag', (req, res) => {
   yr(res);
@@ -25,8 +24,12 @@ app.get('/yr/imorgen', (req, res) => {
   yr(res, true);
 });
 
-app.get('/yr/:land/:fylke/:komune/:by', (req, red) => {
-  yr2(res, req.params.land, req.params.fylke, req.params.komune, req.params.by);
+app.get('/yr/:land/:fylke/:komune/:by/imorgen', (req, red) => {
+  yr2(res, true, req.params.land, req.params.fylke, req.params.komune, req.params.by);
+});
+
+app.get('/yr/:land/:fylke/:komune/:by/idag', (req, red) => {
+  yr2(res, false, req.params.land, req.params.fylke, req.params.komune, req.params.by);
 });
 
 app.get('/fotball', (req, res) => {
