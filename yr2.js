@@ -3,8 +3,8 @@ const xml2json = require('xml2json');
 
 const yrBaseURL = 'http://www.yr.no/sted';
 
-module.exports = (res, imorgen, land, fylke, komune, by) => {
-  fetch(yrBaseURL + '/' + land + '/' + fylke + '/' + komune + '/' + by + '/varsel.xml')
+module.exports = (res, imorgen, land, fylke, kommune, by) => {
+  fetch(yrBaseURL + '/' + land + '/' + fylke + '/' + kommune + '/' + by + '/varsel.xml')
   .then(response => response.text())
   .then(response => JSON.parse(xml2json.toJson(response)))
   .then(data => {
