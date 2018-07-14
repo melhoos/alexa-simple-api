@@ -70,7 +70,7 @@ app.get('/ruter/tog', (req, res) => {
   ruterKjelsas.tog(res);
 });
 
-app.get('test/id/:id', (req, res) => {
+app.get('/ruter/:id', (req, res) => {
   ruterNorge(res, req.params.id);
 });
 
