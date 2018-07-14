@@ -24,11 +24,11 @@ app.get('/yr/imorgen', (req, res) => {
   yr(res, true);
 });
 
-app.get('/yr/:land/:fylke/:komune/:by/imorgen', (req, red) => {
+app.get('/yr/:land/:fylke/:komune/:by/imorgen', (req, res) => {
   yr2(res, true, req.params.land, req.params.fylke, req.params.komune, req.params.by);
 });
 
-app.get('/yr/:land/:fylke/:komune/:by/idag', (req, red) => {
+app.get('/yr/:land/:fylke/:komune/:by/idag', (req, res) => {
   yr2(res, false, req.params.land, req.params.fylke, req.params.komune, req.params.by);
 });
 
