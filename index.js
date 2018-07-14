@@ -1,5 +1,6 @@
 const express = require('express');
 const yr = require('./yr.js');
+const yr2 = require('./yr2.js');
 const fotball = require('./fotball.js');
 const ruter = require('./ruter.js');
 
@@ -22,6 +23,10 @@ app.get('/yr/idag', (req, res) => {
 
 app.get('/yr/imorgen', (req, res) => {
   yr(res, true);
+});
+
+app.get('/yr/:land/:fylke/:komune/:by', (req, red) => {
+  yr2(res, req.params.land, req.params.fylke, req.params.komune, req.params.by);
 });
 
 app.get('/fotball', (req, res) => {
