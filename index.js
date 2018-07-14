@@ -3,7 +3,8 @@ const yrOslo = require('./yr.js');
 const yrNorge = require('./yrNorge.js');
 const yrUtland = require('./yrUtland.js');
 const fotball = require('./fotball.js');
-const ruter = require('./ruter.js');
+const ruterKjelsas = require('./ruterKjelsas.js');
+const ruterNorge = require('./ruterNorge.js');
 
 const app = express();
 
@@ -46,7 +47,7 @@ app.get('/yr/:land/:fylke/:kommune/:by/imorgen', (req, res) => {
 });
 
 app.get('/yr/:land/:fylke/:komune/:by/idag', (req, res) => {
-  yr2(res, false, req.params.land, req.params.fylke, req.params.komune, req.params.by);
+  yrNorge(res, false, req.params.land, req.params.fylke, req.params.komune, req.params.by);
 });
 
 app.get('/fotball', (req, res) => {
@@ -58,15 +59,19 @@ app.get('/fotball', (req, res) => {
 });
 
 app.get('/ruter/buss', (req, res) => {
-  ruter.buss(res);
+  ruterKjelsas.buss(res);
 });
 
 app.get('/ruter/trikk', (req, res) => {
-  ruter.trikk(res);
+  ruterKjelsas.trikk(res);
 });
 
 app.get('/ruter/tog', (req, res) => {
-  ruter.tog(res);
+  ruterKjelsas.tog(res);
+});
+
+app.get('test/id/:id', (req, res) => {
+  ruterNorge(res, req.params.id);
 });
 
 app.listen(app.get('port'), () => {
