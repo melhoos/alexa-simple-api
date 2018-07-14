@@ -1,6 +1,7 @@
 const express = require('express');
-const yr = require('./yr.js');
-const yr2 = require('./yr2.js');
+const yrOslo = require('./yr.js');
+const yrNorge = require('./yrNorge.js');
+const yrUtland = require('./yrUtland.js');
 const fotball = require('./fotball.js');
 const ruter = require('./ruter.js');
 
@@ -17,19 +18,31 @@ app.get('/', (req, res) => {
 });
 
 app.get('/yr/idag', (req, res) => {
-  yr(res);
+  yrOslo(res);
 });
 
 app.get('/yr/imorgen', (req, res) => {
-  yr(res, true);
+  yrOslo(res, true);
+});
+
+app.get('/yr/:land/:stat/:by/', (req, res) => {
+  yrUtland(res, false, req.params.land, req.params.stat, req.params.by);
+});
+
+app.get('/yr/:land/:stat/:by/idag', (req, res) => {
+  yrUtland(res, false, req.params.land, req.params.stat, req.params.by);
+});
+
+app.get('/yr/:land/:stat/:by/imorgen', (req, res) => {
+  yrUtland(res, true, req.params.land, req.params.stat, req.params.by);
 });
 
 app.get('/yr/:land/:fylke/:kommune/:by', (req, res) => {
-  yr2(res, false, req.params.land, req.params.fylke, req.params.kommune, req.params.by);
+  yrNorge(res, false, req.params.land, req.params.fylke, req.params.kommune, req.params.by);
 });
 
 app.get('/yr/:land/:fylke/:kommune/:by/imorgen', (req, res) => {
-  yr2(res, true, req.params.land, req.params.fylke, req.params.kommune, req.params.by);
+  yrNorge(res, true, req.params.land, req.params.fylke, req.params.kommune, req.params.by);
 });
 
 app.get('/yr/:land/:fylke/:komune/:by/idag', (req, res) => {
