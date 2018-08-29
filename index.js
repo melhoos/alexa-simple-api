@@ -5,6 +5,7 @@ const yrUtland = require('./yrUtland.js');
 const fotball = require('./fotball.js');
 const ruterKjelsas = require('./ruterKjelsas.js');
 const ruterNorge = require('./ruterNorge.js');
+const ruterAlexa = require('./ruterAlexa.js');
 
 const app = express();
 
@@ -72,6 +73,10 @@ app.get('/ruter/tog', (req, res) => {
 
 app.get('/ruter/:id', (req, res) => {
   ruterNorge(res, req.params.id);
+});
+
+app.get('/ruterAlexa/:id', (req, res) => {
+  ruterAlexa(res, req.params.id);
 });
 
 app.listen(app.get('port'), () => {
